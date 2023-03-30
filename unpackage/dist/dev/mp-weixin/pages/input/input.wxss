@@ -1,0 +1,16 @@
+/* 水平间距 */
+/* 水平间距 */
+.uni-mt-5 {
+  margin-top: 5px;
+}
+.btn {
+  background-color: #1d9dff;
+  color: #fff;
+  margin: 40rpx 100rpx 40rpx 100rpx;
+}
+.btm {
+  height: 100rpx;
+}
+page {
+  background-color: #fff;
+}

@@ -1,0 +1,35 @@
+
+page {
+		background-color: #fff;
+}
+.container {
+		padding: 40rpx;
+}
+.top {
+		margin-top: 100rpx;
+		font-size: 64rpx;
+		font-weight: 600rpx;
+}
+.title {
+		font-size: 28rpx;
+		margin-top: 80rpx;
+}
+.input {
+		margin-top: 60rpx;
+}
+button {
+		background-color: #2e7dd1;
+		color: #fff;
+		margin-top: 40rpx;
+}
+image {
+		width: 52rpx;
+		height: 52rpx;
+}
+.select {
+		height: 40rpx;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: center;
+		align-items: center;
+}

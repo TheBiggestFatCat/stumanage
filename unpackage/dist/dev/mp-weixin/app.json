@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/register/register",
+    "pages/info/info",
+    "pages/input/input",
+    "pages/manage/manage"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "selectedColor": "#1296db",
+    "color": "#8a8a8a",
+    "list": [
+      {
+        "pagePath": "pages/info/info",
+        "iconPath": "static/images/info1.png",
+        "selectedIconPath": "static/images/info2.png",
+        "text": "学生列表"
+      },
+      {
+        "pagePath": "pages/input/input",
+        "iconPath": "static/images/input1.png",
+        "selectedIconPath": "static/images/input2.png",
+        "text": "导入信息"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
