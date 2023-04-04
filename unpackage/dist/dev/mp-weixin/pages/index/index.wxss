@@ -1,6 +1,8 @@
 
 page {
-		background-color: #fff;
+		background-image: url('https://mp-a0b6177b-d49d-4c50-a9cf-fdec731bc83a.cdn.bspapp.com/cloudstorage/2f29a7b2-7bd6-4ad7-a6cb-d83a1813abe6.png');
+		background-size: cover;
+		background-repeat: no-repeat;
 }
 .container {
 		padding: 40rpx;

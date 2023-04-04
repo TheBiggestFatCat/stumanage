@@ -3,6 +3,7 @@ const common_vendor = require("../../common/vendor.js");
 const _sfc_main = {
   data() {
     return {
+      goodPicture: [],
       poor: [{
         text: "不是",
         value: 0
@@ -19,7 +20,8 @@ const _sfc_main = {
         assistant: "",
         award: "",
         scholarship: "",
-        poor: ""
+        poor: "",
+        photo: ""
       },
       rules: {
         studentId: {
@@ -67,15 +69,15 @@ const _sfc_main = {
       }
     };
   },
-  onLoad() {
-  },
-  onReady() {
-  },
   methods: {
     submit() {
       const address = getApp().globalData.address;
+      this.formData.photo = this.goodPicture.join(",");
+      console.log(this.formData.photo);
       const that = this;
       this.$refs.form.validate().then((res) => {
+        console.log(res);
+        res.photo = that.formData.photo;
         common_vendor.index.request({
           url: address + "/Admin/Students/addStudents",
           header: {
@@ -88,6 +90,7 @@ const _sfc_main = {
               common_vendor.index.showToast({
                 title: "提交成功"
               });
+              that.goodPicture = [];
             } else {
               common_vendor.index.showToast({
                 title: "提交失败",
@@ -106,6 +109,54 @@ const _sfc_main = {
       }).catch((err) => {
         console.log("表单错误信息：", err);
       });
+    },
+    addPic() {
+      const goodPic = this.goodPicture.join(",");
+      const that = this;
+      console.log(goodPic);
+      common_vendor.index.chooseImage({
+        count: 1,
+        success(res) {
+          if (res.tempFilePaths.length > 0) {
+            let filePath = res.tempFilePaths[0];
+            common_vendor.index.showLoading({
+              title: "上传中..",
+              mask: true
+            });
+            common_vendor.Es.uploadFile({
+              filePath,
+              cloudPath: "a.png",
+              onUploadProgress: function(progressEvent) {
+                console.log(progressEvent);
+                Math.round(
+                  progressEvent.loaded * 100 / progressEvent.total
+                );
+              },
+              success(res2) {
+                that.goodPicture.push(res2.fileID);
+                console.log(that.goodPicture);
+                that.$forceUpdate();
+              },
+              fail(err) {
+                console.log(err);
+                common_vendor.index.showToast({
+                  title: "上传失败",
+                  icon: "error"
+                });
+                common_vendor.index.hideLoading();
+              },
+              complete() {
+                common_vendor.index.hideLoading();
+              }
+            });
+          }
+        }
+      });
+    },
+    // 删除图片
+    cancelPic(index) {
+      this.goodPicture.splice(index, 1);
+      this.$forceUpdate();
     }
   }
 };
@@ -115,18 +166,20 @@ if (!Array) {
   const _easycom_uni_section2 = common_vendor.resolveComponent("uni-section");
   const _easycom_uni_data_checkbox2 = common_vendor.resolveComponent("uni-data-checkbox");
   const _easycom_uni_forms2 = common_vendor.resolveComponent("uni-forms");
-  (_easycom_uni_easyinput2 + _easycom_uni_forms_item2 + _easycom_uni_section2 + _easycom_uni_data_checkbox2 + _easycom_uni_forms2)();
+  const _easycom_uni_icons2 = common_vendor.resolveComponent("uni-icons");
+  (_easycom_uni_easyinput2 + _easycom_uni_forms_item2 + _easycom_uni_section2 + _easycom_uni_data_checkbox2 + _easycom_uni_forms2 + _easycom_uni_icons2)();
 }
 const _easycom_uni_easyinput = () => "../../uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.js";
 const _easycom_uni_forms_item = () => "../../uni_modules/uni-forms/components/uni-forms-item/uni-forms-item.js";
 const _easycom_uni_section = () => "../../uni_modules/uni-section/components/uni-section/uni-section.js";
 const _easycom_uni_data_checkbox = () => "../../uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox.js";
 const _easycom_uni_forms = () => "../../uni_modules/uni-forms/components/uni-forms/uni-forms.js";
+const _easycom_uni_icons = () => "../../uni_modules/uni-icons/components/uni-icons/uni-icons.js";
 if (!Math) {
-  (_easycom_uni_easyinput + _easycom_uni_forms_item + _easycom_uni_section + _easycom_uni_data_checkbox + _easycom_uni_forms)();
+  (_easycom_uni_easyinput + _easycom_uni_forms_item + _easycom_uni_section + _easycom_uni_data_checkbox + _easycom_uni_forms + _easycom_uni_icons)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {
+  return common_vendor.e({
     a: common_vendor.o(($event) => $data.formData.studentId = $event),
     b: common_vendor.p({
       name: "studentId",
@@ -258,8 +311,30 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       modelValue: $data.formData,
       rules: $data.rules
     }),
-    N: common_vendor.o((...args) => $options.submit && $options.submit(...args))
-  };
+    N: common_vendor.f($data.goodPicture, (item, index, i0) => {
+      return {
+        a: "0e395990-28-" + i0,
+        b: common_vendor.o(($event) => $options.cancelPic(index), index),
+        c: item,
+        d: index
+      };
+    }),
+    O: common_vendor.p({
+      type: "closeempty",
+      size: "12",
+      color: "#fff"
+    }),
+    P: $data.goodPicture.length < 9
+  }, $data.goodPicture.length < 9 ? {
+    Q: common_vendor.p({
+      type: "plus-filled",
+      size: "20",
+      color: "#949494"
+    }),
+    R: common_vendor.o((...args) => $options.addPic && $options.addPic(...args))
+  } : {}, {
+    S: common_vendor.o((...args) => $options.submit && $options.submit(...args))
+  });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/WebProjects/stumanage/pages/input/input.vue"]]);
 wx.createPage(MiniProgramPage);

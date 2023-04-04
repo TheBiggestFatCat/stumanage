@@ -1,16 +1,16 @@
 <template>
 	<view class="container">
 		<view class="top">
-			你改个名字系统
+			学生管理
 		</view>
 		<view class="title">用户名</view>
 		<uni-easyinput class="input" v-model="username" placeholder="" />
 		<view class="title">密码</view>
 		<uni-easyinput class="input" v-model="password" type="password" placeholder="" />
 		<view style="margin-top: 40rpx;">
-				<view class="uni-px-5 uni-pb-5">
-					<uni-data-checkbox v-model="radio1" :localdata="sex"></uni-data-checkbox>
-				</view>
+			<view class="uni-px-5 uni-pb-5">
+				<uni-data-checkbox v-model="radio1" :localdata="sex"></uni-data-checkbox>
+			</view>
 		</view>
 		<button @click="login">登录</button>
 		<button @click="register">注册</button>
@@ -23,14 +23,17 @@
 			return {
 				username: '',
 				password: '',
-				radio1: 1,
-				sex: [{
+				radio1: 2,
+				sex: [
+					{
 					text: '教师',
 					value: 2
-				}, {
-					text: '管理员',
-					value: 1
-				}]
+				}, 
+				// {
+				// 	text: '管理员',
+				// 	value: 1
+				// },
+				]
 			}
 		},
 		
@@ -58,6 +61,7 @@
 					success(res) {
 						if (res.data == 1) {
 							if (that.radio1 == 2) {
+								getApp().globalData.username = that.$data.username
 								uni.switchTab({
 									url: '/pages/info/info'
 								})
@@ -76,13 +80,15 @@
 					}
 				})
 			}
-		}
+		},
 	}
 </script>
 
 <style>
 	page {
-		background-color: #fff;
+		background-image: url('https://mp-a0b6177b-d49d-4c50-a9cf-fdec731bc83a.cdn.bspapp.com/cloudstorage/2f29a7b2-7bd6-4ad7-a6cb-d83a1813abe6.png');
+		background-size: cover;
+		background-repeat: no-repeat;
 	}
 
 	.container {

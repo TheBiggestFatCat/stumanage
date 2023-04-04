@@ -7,10 +7,12 @@ if (!Math) {
   "./pages/info/info.js";
   "./pages/input/input.js";
   "./pages/manage/manage.js";
+  "./pages/mine/mine.js";
 }
 const _sfc_main = {
   globalData: {
-    address: "http://127.0.0.1:8091"
+    address: "http://127.0.0.1:8091",
+    username: "未登录"
   },
   onLaunch: function() {
     console.warn("当前组件仅支持 uni_modules 目录结构 ，请升级 HBuilderX 到 3.1.0 版本以上！");

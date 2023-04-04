@@ -5,14 +5,17 @@ const _sfc_main = {
     return {
       username: "",
       password: "",
-      radio1: 1,
-      sex: [{
-        text: "教师",
-        value: 2
-      }, {
-        text: "管理员",
-        value: 1
-      }]
+      radio1: 2,
+      sex: [
+        {
+          text: "教师",
+          value: 2
+        }
+        // {
+        // 	text: '管理员',
+        // 	value: 1
+        // },
+      ]
     };
   },
   methods: {
@@ -39,6 +42,7 @@ const _sfc_main = {
         success(res) {
           if (res.data == 1) {
             if (that.radio1 == 2) {
+              getApp().globalData.username = that.$data.username;
               common_vendor.index.switchTab({
                 url: "/pages/info/info"
               });

@@ -4,7 +4,8 @@
     "pages/register/register",
     "pages/info/info",
     "pages/input/input",
-    "pages/manage/manage"
+    "pages/manage/manage",
+    "pages/mine/mine"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -28,6 +29,12 @@
         "iconPath": "static/images/input1.png",
         "selectedIconPath": "static/images/input2.png",
         "text": "导入信息"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/images/mine.png",
+        "selectedIconPath": "static/images/mine2.png",
+        "text": "我的"
       }
     ]
   },

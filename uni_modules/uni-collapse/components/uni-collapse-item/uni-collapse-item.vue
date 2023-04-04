@@ -187,9 +187,9 @@
 				if (this.isOpen && this.collapse) {
 					this.collapse.setAccordion(this)
 				}
-				if (type !== 'init') {
-					this.collapse.onChange(isOpen, this)
-				}
+				// if (type !== 'init') {
+				// 	this.collapse.onChange(isOpen, this)
+				// }
 			},
 			getCollapseHeight(type, index = 0) {
 				const views = uni.createSelectorQuery().in(this)

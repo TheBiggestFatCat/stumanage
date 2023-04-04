@@ -3780,43 +3780,43 @@ function injectHook(type, hook, target = currentInstance, prepend = false) {
     warn(`${apiName} is called when there is no active component instance to be associated with. Lifecycle injection APIs can only be used during execution of setup().`);
   }
 }
-const createHook = (lifecycle) => (hook, target = currentInstance) => (
+const createHook$1 = (lifecycle) => (hook, target = currentInstance) => (
   // post-create lifecycle registrations are noops during SSR (except for serverPrefetch)
   (!isInSSRComponentSetup || lifecycle === "sp") && injectHook(lifecycle, (...args) => hook(...args), target)
 );
-const onBeforeMount = createHook(
+const onBeforeMount = createHook$1(
   "bm"
   /* LifecycleHooks.BEFORE_MOUNT */
 );
-const onMounted = createHook(
+const onMounted = createHook$1(
   "m"
   /* LifecycleHooks.MOUNTED */
 );
-const onBeforeUpdate = createHook(
+const onBeforeUpdate = createHook$1(
   "bu"
   /* LifecycleHooks.BEFORE_UPDATE */
 );
-const onUpdated = createHook(
+const onUpdated = createHook$1(
   "u"
   /* LifecycleHooks.UPDATED */
 );
-const onBeforeUnmount = createHook(
+const onBeforeUnmount = createHook$1(
   "bum"
   /* LifecycleHooks.BEFORE_UNMOUNT */
 );
-const onUnmounted = createHook(
+const onUnmounted = createHook$1(
   "um"
   /* LifecycleHooks.UNMOUNTED */
 );
-const onServerPrefetch = createHook(
+const onServerPrefetch = createHook$1(
   "sp"
   /* LifecycleHooks.SERVER_PREFETCH */
 );
-const onRenderTriggered = createHook(
+const onRenderTriggered = createHook$1(
   "rtg"
   /* LifecycleHooks.RENDER_TRIGGERED */
 );
-const onRenderTracked = createHook(
+const onRenderTracked = createHook$1(
   "rtc"
   /* LifecycleHooks.RENDER_TRACKED */
 );
@@ -7076,6 +7076,13 @@ const pages = [
       navigationBarTitleText: "",
       enablePullDownRefresh: false
     }
+  },
+  {
+    path: "pages/mine/mine",
+    style: {
+      navigationBarTitleText: "",
+      enablePullDownRefresh: false
+    }
   }
 ];
 const globalStyle = {
@@ -7103,6 +7110,12 @@ const tabBar = {
       iconPath: "static/images/input1.png",
       selectedIconPath: "static/images/input2.png",
       text: "导入信息"
+    },
+    {
+      pagePath: "pages/mine/mine",
+      iconPath: "static/images/mine.png",
+      selectedIconPath: "static/images/mine2.png",
+      text: "我的"
     }
   ]
 };
@@ -7380,7 +7393,7 @@ function g(e2) {
 function m(e2) {
   return e2 && "string" == typeof e2 ? JSON.parse(e2) : e2;
 }
-const y = true, _ = "mp-weixin", v = m([]), S = _, k = m(""), I = m("[]") || [];
+const y = true, _ = "mp-weixin", v = m([]), S = _, k = m('{\n    "address": [\n        "127.0.0.1",\n        "192.168.150.1",\n        "192.168.220.1",\n        "192.168.0.100"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), I = m('[{"provider":"aliyun","spaceName":"bigfatcat","spaceId":"mp-a0b6177b-d49d-4c50-a9cf-fdec731bc83a","clientSecret":"RNoHJRuMRBWRBXtUqT1qmQ==","endpoint":"https://api.next.bspapp.com"}]') || [];
 let T = "";
 try {
   T = "__UNI__3AB97E8";
@@ -9481,6 +9494,10 @@ let Ps = new class {
   } }), hs(Ps), Ps.addInterceptor = O, Ps.removeInterceptor = x, Ps.interceptObject = L;
 })();
 var Es = Ps;
+const createHook = (lifecycle) => (hook, target = getCurrentInstance()) => {
+  !isInSSRComponentSetup && injectHook(lifecycle, hook, target);
+};
+const onShow = /* @__PURE__ */ createHook(ON_SHOW);
 exports.Es = Es;
 exports._export_sfc = _export_sfc;
 exports.createSSRApp = createSSRApp;
@@ -9490,6 +9507,7 @@ exports.index = index;
 exports.initVueI18n = initVueI18n;
 exports.n = n$1;
 exports.o = o$1;
+exports.onShow = onShow;
 exports.p = p$1;
 exports.resolveComponent = resolveComponent;
 exports.s = s$1;
