@@ -7393,7 +7393,7 @@ function g(e2) {
 function m(e2) {
   return e2 && "string" == typeof e2 ? JSON.parse(e2) : e2;
 }
-const y = true, _ = "mp-weixin", v = m([]), S = _, k = m('{\n    "address": [\n        "127.0.0.1",\n        "192.168.150.1",\n        "192.168.220.1",\n        "192.168.0.100"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), I = m('[{"provider":"aliyun","spaceName":"bigfatcat","spaceId":"mp-a0b6177b-d49d-4c50-a9cf-fdec731bc83a","clientSecret":"RNoHJRuMRBWRBXtUqT1qmQ==","endpoint":"https://api.next.bspapp.com"}]') || [];
+const y = true, _ = "mp-weixin", v = m([]), S = _, k = m('{\n    "address": [\n        "127.0.0.1",\n        "192.168.150.1",\n        "192.168.220.1",\n        "192.168.0.105"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), I = m('[{"provider":"aliyun","spaceName":"bigfatcat","spaceId":"mp-a0b6177b-d49d-4c50-a9cf-fdec731bc83a","clientSecret":"RNoHJRuMRBWRBXtUqT1qmQ==","endpoint":"https://api.next.bspapp.com"}]') || [];
 let T = "";
 try {
   T = "__UNI__3AB97E8";
@@ -9509,6 +9509,7 @@ exports.n = n$1;
 exports.o = o$1;
 exports.onShow = onShow;
 exports.p = p$1;
+exports.reactive = reactive;
 exports.resolveComponent = resolveComponent;
 exports.s = s$1;
 exports.sr = sr;

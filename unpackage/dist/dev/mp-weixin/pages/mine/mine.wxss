@@ -1,6 +1,46 @@
 /* 水平间距 */
 /* 水平间距 */
 page {
+  font-size: 14px;
   padding: 40rpx;
   box-sizing: border-box;
+  background-image: url("https://mp-a0b6177b-d49d-4c50-a9cf-fdec731bc83a.cdn.bspapp.com/cloudstorage/2f29a7b2-7bd6-4ad7-a6cb-d83a1813abe6.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.avatar {
+  text-align: center;
+}
+.user-avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+.input {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #e3e3e3;
+  width: 60%;
+  margin: 0 auto;
+}
+.username {
+  text-align: center;
+  padding: 30rpx;
+  font-size: 18px;
+  font-weight: 600;
+}
+.altername {
+  text-align: center;
+}
+.alter {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 48rpx 30rpx 48rpx;
+  background-color: #fff;
+}
+.grayline {
+  width: 80%;
+  margin: 0 auto;
+  border-bottom: 1px solid #e6e6e6;
 }

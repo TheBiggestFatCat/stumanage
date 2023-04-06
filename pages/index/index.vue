@@ -41,12 +41,19 @@
 			// 跳转至注册
 			register() {
 				uni.navigateTo({
-					url: '/pages/register/register'
+					url: '/pages/register/register',
 				})
 			},
+			// 登录
 			login() {
 				const address = getApp().globalData.address
 				const that = this
+				uni.request({
+					url: 'http://127.0.0.1:8091/Admin/User/selectUserByName/' + this.$data.username,
+					success(res) {
+						getApp().globalData.userid = res.data.userId
+					}
+				})
 				uni.request({
 					url: address + '/Admin/User/userLogin',
 					header: {

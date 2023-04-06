@@ -25,9 +25,16 @@ const _sfc_main = {
         url: "/pages/register/register"
       });
     },
+    // 登录
     login() {
       const address = getApp().globalData.address;
       const that = this;
+      common_vendor.index.request({
+        url: "http://127.0.0.1:8091/Admin/User/selectUserByName/" + this.$data.username,
+        success(res) {
+          getApp().globalData.userid = res.data.userId;
+        }
+      });
       common_vendor.index.request({
         url: address + "/Admin/User/userLogin",
         header: {
